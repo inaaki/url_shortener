@@ -1,12 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    index page 
-  </body>
-</html>
+{% extends "base.html" %} {% block title %} Url Shortener {% endblock %} {%
+block body %}
+<div class="wrapper">
+  <div>
+    <div class="form_wrapper">
+      <form class="form" action="">
+        <input class="input input__box" type="url" required autofocus />
+        <input class="input input__submit" type="submit" value="shorten" />
+      </form>
+    </div>
+    <div class="center">
+      <div class="result">
+        <span id="short_url">demourl.com/Adhiufui432oS</span>
+        <span class="icon">
+          <img src="{{url_for('static',filename='copy.png')}}" alt="ic" />
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
