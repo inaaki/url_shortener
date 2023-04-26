@@ -9,6 +9,8 @@ def home():
     if request.method == 'POST':
         url = request.form['url']
         short = add_to_db(url)
+        if short:
+            short = request.host_url + short
         return render_template('index.html', short=short, long=url)
     else:
         return render_template('index.html')
