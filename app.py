@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-from src.db import add_to_db
+from flask import Flask, render_template, request, redirect
+from src.db import add_to_db, check_url
 
 app = Flask(__name__)
 
@@ -19,8 +19,7 @@ def home():
 @app.route('/<short_url>')
 def redirect_to_url(short_url):
     # check if url exists to db
-    #     if exists:
-    #         redirect to that url
-    #     else:
-    #         redirect to not found
-    pass
+    urls = check_url(short_url)
+    if urls:
+        return redirect(urls[1])
+    return "Not Found"
