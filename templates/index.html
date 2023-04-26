@@ -3,20 +3,38 @@ block body %}
 <div class="wrapper">
   <div>
     <div class="form_wrapper">
-      <form class="form" action="">
-        <input class="input input__box" type="url" required autofocus />
+      <form class="form" action="/" method="post">
+        {% if long %}
+        <input
+          class="input input__box"
+          type="url"
+          name="url"
+          value="{{long}}"
+          required
+        />
+        {% else %}
+        <input
+          class="input input__box"
+          type="url"
+          name="url"
+          required
+          autofocus
+        />
+        {% endif %}
         <input class="input input__submit" type="submit" value="shorten" />
       </form>
     </div>
+    {% if short %}
     <div class="center">
       <div class="result">
-        <span id="short_url">demourl.com/Adhiufui432oS</span>
+        <span id="short_url">{{short}}</span>
         <span class="icon">
           <img src="{{url_for('static',filename='copy.png')}}" alt="ic" />
         </span>
         <span class="copied">copied</span>
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
